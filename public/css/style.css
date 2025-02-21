@@ -172,7 +172,8 @@ header {
     z-index: -1;
     height: 50vh;;
     width: 100%;;
-    background: radial-gradient(50% 100% at 49.1% 0%,rgba(0,222,188,.15) 0%,rgba(12,23,22,0) 100%);
+    /* background: radial-gradient(50% 100% at 49.1% 0%,rgba(0,222,188,.15) 0%,rgba(12,23,22,0) 100%); */
+    background: radial-gradient(50% 100% at 49.1% 0%,rgba(74, 25, 208, 0.15) 0%,rgba(12,23,22,0) 100%);
 }
 .main_section {
     width: 100%;
@@ -354,7 +355,9 @@ canvas {
     height: 80%;
     z-index: -111;
     position: absolute;
-    background: radial-gradient(41% 50% at 50% 50%,rgba(0,222,188,.15) 0%,rgba(12,23,22,0) 100%);
+    /* background: radial-gradient(41% 50% at 50% 50%,rgba(0,222,188,.15) 0%,rgba(12,23,22,0) 100%); */
+    background: radial-gradient(41% 50% at 50% 50%,rgba(59, 0, 222, 0.15) 0%,rgba(12,23,22,0) 100%);
+
 }
 .service_cards_wrapper {
     width: 100%;
@@ -685,7 +688,8 @@ canvas {
     height: 100%;
     z-index: -1;;
     bottom: 0px;;
-    background: radial-gradient(54.12% 66% at 50% 90.1%, rgba(0, 222, 188, 0.15) 0%, rgba(12, 23, 22, 0) 100%);
+    /* background: radial-gradient(54.12% 66% at 50% 90.1%, rgba(0, 222, 188, 0.15) 0%, rgba(12, 23, 22, 0) 100%); */
+    background: radial-gradient(54.12% 66% at 50% 90.1%, rgba(90, 0, 222, 0.15) 0%, rgba(12, 23, 22, 0) 100%);
 }
 .main_projects {
     width: 100%;
@@ -1115,4 +1119,8 @@ textarea {
 
 .footer_my {
     width: 370px;
+}
+
+.contact_form p {
+    font-size:1.3rem;
 }
