@@ -3,11 +3,6 @@ const extractId = ()=> {
     const segments = url.split('/');
     return segments[segments.length -1];
 }
-
-
-
-
-
 function handleProjectInfo() {
     const projectId = extractId(); 
     if (!projectId) {
@@ -36,10 +31,6 @@ function handleProjectInfo() {
             console.error('Error occurred:', err);
         });
 }
-
-
-
-
 function handleFeaturesInfo() {
     const projectId = extractId(); 
     if (!projectId) {
@@ -78,11 +69,6 @@ function handleFeaturesInfo() {
             console.error('Error occurred:', err);
         });
 }
-
-
-
-
-
 try {
 function generateProjectCards() {
     const projectsWrapper = document.querySelector('.projects_wrapper');
@@ -135,9 +121,6 @@ function generateProjectCards() {
 }catch(error) {
     console.log("Function Generate Project Cards not Working");
 }
-
-
-
 const goToMainProject = () => {
     const projectCards = document.querySelectorAll('.project_card');
     projectCards.forEach(card => {
@@ -147,10 +130,6 @@ const goToMainProject = () => {
         });
     });
 };
-
-
-
-
 const getDevInfo = ()=> {
     if(!document.querySelector(".aboutSection")){
         return;
@@ -174,10 +153,6 @@ fetch('/api/get_dev_info')
             neonButton.style.backgroundImage = "radial-gradient(54.12% 66% at 50% 90.1%, rgba(17, 0, 210, 0.15) 0%, rgba(196, 196, 196, 0) 100%)";        }
     })
     .catch(err => console.error('Error fetching data:', err));
-
-
-
-
 function populateProfileContent(profile, data) {
     const profileImg = document.querySelector('.pic_container img');
     profileImg.src = profile.image; 

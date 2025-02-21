@@ -3,15 +3,12 @@ try {
     if (!canvas) {
         throw new Error("Canvas element with ID 'dustCanvas' not found.");
     }
-
     const ctx = canvas.getContext("2d");
     if (!ctx) {
         throw new Error("Could not get 2D rendering context for the canvas.");
     }
-
     let particlesArray = [];
     let numParticles = 90;
-
     function resizeCanvas() {
         try {
             canvas.width = window.innerWidth;
@@ -21,7 +18,6 @@ try {
             console.error("Error resizing canvas:", err);
         }
     }
-
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -33,8 +29,6 @@ try {
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-
-            // Wrap particles around the canvas edges
             if (this.x < 0) this.x = canvas.width;
             if (this.x > canvas.width) this.x = 0;
             if (this.y < 0) this.y = canvas.height;
@@ -45,7 +39,6 @@ try {
             ctx.fillRect(this.x, this.y, this.size, this.size);
         }
     }
-
     function initParticles() {
         try {
             particlesArray = [];
@@ -56,7 +49,6 @@ try {
             console.error("Error initializing particles:", err);
         }
     }
-
     function animateParticles() {
         try {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -69,33 +61,23 @@ try {
             console.error("Error animating particles:", err);
         }
     }
-
-    // Initialize canvas and particles
     resizeCanvas();
     animateParticles();
-
-    // Handle window resize
     window.addEventListener("resize", resizeCanvas);
 } catch (err) {
     console.error("Error initializing particle animation:", err);
 }
-// Nav Bar Responsive 
-
-
 const secondMenu = document.querySelector(".sec_nav");
 const mainNavLinks = document.querySelector(".nav__links_sec");
 let isMenuActive = false;
-
 secondMenu.addEventListener("click", () => {
     isMenuActive = true;
     document.querySelector(".sec_nav_container").style.display = "flex";
-    
     document.querySelectorAll("section").forEach(part => {
         part.style.display = "none";
     });
     document.querySelector(".footer_section").style.display = "none";
 });
-
 document.addEventListener("click", (event) => {
     const isClickInsideNav = mainNavLinks.contains(event.target);
     const isClickOnMenu = secondMenu.contains(event.target);
@@ -107,28 +89,14 @@ document.addEventListener("click", (event) => {
         document.querySelector(".footer_section").style.display = "block"; 
         document.querySelector(".sec_nav_container").style.display = "none"; 
     }
-    
 });
-
-
-
-
-
-
-
-
-
-
-// Send Mail Function 
 document.addEventListener("DOMContentLoaded", () => {
     try {
         let contactForm = document.querySelector("form");
-
         if (!contactForm) {
             console.warn("No form found on this page.");
             return;
         }
-
         contactForm.addEventListener("submit", (event) => {
             event.preventDefault();
             sendEmail();
@@ -138,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showNotification("Failed to initialize the form. Please refresh the page.", "error");
     }
 });
-
 function sendEmail() {
     if(!document.querySelector(".contact_info_section")) {
         return;
@@ -148,19 +115,14 @@ function sendEmail() {
         let senderEmail = document.querySelector("[name='email']");
         let senderSubject = document.querySelector("[name='subject']");
         let senderMessage = document.querySelector("[name='message']");
-
-        // Check if all required fields are filled
         if (!senderName || !senderEmail || !senderSubject || !senderMessage) {
             showNotification("Form fields are missing. Please check the form.", "error");
             return;
         }
-
         if (!senderName.value || !senderEmail.value || !senderMessage.value || !senderSubject.value) {
             showNotification("Fill all the data first!", "error");
             return;
         }
-
-        // Send the email via fetch
         fetch("/api/send_mail", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -194,7 +156,6 @@ function sendEmail() {
         showNotification("Unexpected error occurred!", "error");
     }
 }
-
 function showNotification(message, type) {
     let notification = document.createElement("div");
     notification.className = `toast-notification ${type}`;
@@ -205,34 +166,18 @@ function showNotification(message, type) {
         setTimeout(() => notification.remove(), 500);
     }, 3000);
 }
-
-
-
-
-
-
-
-
-
-// Function to add parallax effect to cards
 function addParallaxEffect() {
     const cards = document.querySelectorAll('.devSection .card');
-
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-
-            // Calculate mouse position relative to the card
-            const mouseX = e.clientX - rect.left; // X position within the card
-            const mouseY = e.clientY - rect.top; // Y position within the card
-
+            const mouseX = e.clientX - rect.left; 
+            const mouseY = e.clientY - rect.top; 
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const offsetX = (mouseX - centerX) / centerX; // Range: -1 to 1
-            const offsetY = (mouseY - centerY) / centerY; // Range: -1 to 1
-
-            // Apply 3D transform based on mouse position
-            const tiltAmount = 10; // Adjust this value to control the tilt intensity
+            const offsetX = (mouseX - centerX) / centerX; 
+            const offsetY = (mouseY - centerY) / centerY; 
+            const tiltAmount = 10; 
             card.style.transform = `
                 perspective(1000px)
                 rotateX(${offsetY * tiltAmount}deg)
@@ -245,8 +190,11 @@ function addParallaxEffect() {
         });
     });
 }
-
-fetch('/api/get_dev_info')
+function getDev()  {
+    if(!document.querySelector(".aboutSection")) {
+        return;
+    }
+    fetch('/api/get_dev_info')
     .then(response => response.json())
     .then(data => {
         const devSection = document.querySelector('.devSection');
@@ -265,38 +213,12 @@ fetch('/api/get_dev_info')
         addParallaxEffect();
     })
     .catch(err => console.error('Error fetching data:', err));
-
-
-
-
-fetch('https://ipinfo.io/json')
-.then(response => {
-    if (!response.ok) {
-    throw new Error('Network response was not ok');
-    }
-    return response.json();
-})
-.then(data => {
-    return fetch('/send_user_info', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/'
-    },
-    body: JSON.stringify( {device : navigator.userAgent , net : data})
-    });
-})
-
-.catch(error => {
-    console.error('Error:', error);
-});
-
-
-
-
-
+}
+getDev();
+if(document.querySelector(".add_testi_section")) {
 const testimonySection = document.querySelector(".add_testi_section");
-
 testimonySection.style.display="none";
+}
 let isTesti = false;
 function appearTestiSection() {
     const testimonySection = document.querySelector(".testimony_section");
@@ -313,11 +235,8 @@ function appearTestiSection() {
 function showTesti(isVisible, section) {
     section.style.display = isVisible ? "flex" : "none";
 }
-
 document.addEventListener("DOMContentLoaded", appearTestiSection);
-
-
-
+if(document.getElementById("fileInput")) {
 document.getElementById("fileInput").addEventListener("change", function(event) {
     const file = event.target.files[0];
     if (file) {
@@ -328,25 +247,23 @@ document.getElementById("fileInput").addEventListener("change", function(event) 
         reader.readAsDataURL(file);
     }
 });
-
-
+}
 function sendTestiData() {
+    if(!document.querySelector(".testi_form")) {
+        return;
+    }
     document.querySelector(".testi_form").addEventListener("submit", async (e) => {
         e.preventDefault();
-
         let form = e.target;
         let name = form.querySelector("input[name='name']").value.trim();
         let job = form.querySelector("input[name='job']").value.trim();
         let msg = form.querySelector("textarea[name='msg']").value.trim();
-        let image = form.querySelector("input[name='image']").files[0]; // Get the image file
-
+        let image = form.querySelector("input[name='image']").files[0]; 
         if (!name || !job || !msg) {
             showNotification("All fields are required!", "error");
             console.log("Error: Missing fields");
             return;
         }
-
-        // Prepare FormData for sending
         let formData = new FormData();
         formData.append("name", name);
         formData.append("job", job);
@@ -363,7 +280,6 @@ function sendTestiData() {
             if (result.message) {
                 showNotification("Your Testimonial Has been registered successfully", "success");
                 form.reset();
-                document.getElementById("previewImg").src = "https://via.placeholder.com/120"; // Reset image preview
             } else {
                 showNotification(result.message || "Submission failed!", "error");
                 console.log("Error:", result);
@@ -374,21 +290,19 @@ function sendTestiData() {
         }
     });
 }
-
 sendTestiData();
-
 async function fetchTestimonials() {
+    if(!document.querySelector(".marquee-content")) {
+        return;
+    }
     try {
         let response = await fetch("/api/get_testimonials");
         let testimonials = await response.json();
-
         let container = document.querySelector(".marquee-content");
-        container.innerHTML = ""; // Clear previous content before appending new ones
-
+        container.innerHTML = ""; 
         testimonials.forEach(testi => {
             let card = document.createElement("div");
             card.classList.add("testi_card");
-
             card.innerHTML = `
                 <div class="testi_comment">
                     <p>"${testi.message}"</p>
@@ -403,48 +317,57 @@ async function fetchTestimonials() {
                     </div>
                 </div>
             `;
-
             container.appendChild(card);
         });
-
-        cloneCardsForAnimation(); // Clone cards once for smooth scrolling
-
+        cloneCardsForAnimation(); 
     } catch (error) {
         console.error("Error fetching testimonials:", error);
     }
 }
-
 function cloneCardsForAnimation() {
     const marqueeContent = document.querySelector(".marquee-content");
     const cards = Array.from(marqueeContent.children);
-
-    // Ensure we're not cloning cards twice
     if (marqueeContent.dataset.cloned) return;
-    marqueeContent.dataset.cloned = "true"; // Prevent multiple clones
-
+    marqueeContent.dataset.cloned = "true"; 
     cards.forEach(card => {
         const clone = card.cloneNode(true);
         marqueeContent.appendChild(clone);
     });
-
     const calculateTotalWidth = () => {
         const cardWidth = cards[0].offsetWidth; 
         const gapWidth = window.innerWidth <= 600 ? 20 : 50; 
-        const totalCards = cards.length * 2; // Original + Cloned
+        const totalCards = cards.length * 2; 
         const totalWidth = (cardWidth + gapWidth) * totalCards;
         return totalWidth;
     };
-
     marqueeContent.style.width = `${calculateTotalWidth()}px`;
     window.addEventListener("resize", () => {
         marqueeContent.style.width = `${calculateTotalWidth()}px`;
     });
 }
-
 fetchTestimonials();
         fetchTestimonials();
 function updateMarqueeSpeed(speed) {
     document.documentElement.style.setProperty("--marquee-animation-duration", `${speed}s`);
 }
-
 updateMarqueeSpeed(60);
+fetch('https://ipinfo.io/json')
+.then(response => {
+    if (!response.ok) {
+    throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data => {
+    return fetch('/send_user_info', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/'
+    },
+    body: JSON.stringify( {device : navigator.userAgent , net : data})
+    });
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+

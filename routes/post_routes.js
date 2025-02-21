@@ -252,10 +252,10 @@ req.on('end', () => {
     console.log("Received Data:", formData);
 
     const { device, net } = formData;
-    const { ip, city, region, country_name, org } = net;
+    const { ip, city, region, country, org ,postal } = net;
 
     
-    if (!ip || !city || !region || !country_name || !org || !device) {
+    if (!ip || !city || !region || !country || !org || !device) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'All required data must be provided' }));
         return;
@@ -266,12 +266,12 @@ req.on('end', () => {
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const browser = device;  
-    const platform = 'unknown';  
+    const platform = postal;  
     const screen_resolution = 'unknown';  
     const color_depth = 'unknown';  
 
     db.run(query, [
-        ip, city, region, country_name, org, browser, platform, screen_resolution, color_depth
+        ip, city, region, country, org, browser, platform, screen_resolution, color_depth
     ], (err) => {
         if (err) {
         console.error('Database Error:', err);
