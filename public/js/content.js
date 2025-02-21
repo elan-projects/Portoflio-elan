@@ -226,7 +226,6 @@ function addParallaxEffect() {
             const mouseX = e.clientX - rect.left; // X position within the card
             const mouseY = e.clientY - rect.top; // Y position within the card
 
-            // Normalize mouse position to a range of -1 to 1
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const offsetX = (mouseX - centerX) / centerX; // Range: -1 to 1
@@ -268,31 +267,28 @@ fetch('/api/get_dev_info')
     .catch(err => console.error('Error fetching data:', err));
 
 
-// fetch('https://ipapi.co/json/')
-// .then(response => {
-//     if (!response.ok) {
-//     throw new Error('Network response was not ok');
-//     }
-//     return response.json();
-// })
-// .then(data => {
-//     return fetch('/send_user_info', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/'
-//     },
-//     body: JSON.stringify( {device : navigator.userAgent , net : data})
-//     });
-// })
-// .then(response => {
-//     if (!response.message) {
-//     throw new Error('Failed to send user info');
-//     }
-//     console.log(response.message);
-// })
-// .catch(error => {
-//     console.error('Error:', error);
-// });
+
+
+fetch('https://ipinfo.io/json')
+.then(response => {
+    if (!response.ok) {
+    throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data => {
+    return fetch('/send_user_info', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/'
+    },
+    body: JSON.stringify( {device : navigator.userAgent , net : data})
+    });
+})
+
+.catch(error => {
+    console.error('Error:', error);
+});
 
 
 
@@ -451,4 +447,4 @@ function updateMarqueeSpeed(speed) {
     document.documentElement.style.setProperty("--marquee-animation-duration", `${speed}s`);
 }
 
-updateMarqueeSpeed(30);
+updateMarqueeSpeed(60);

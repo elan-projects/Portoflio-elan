@@ -76,6 +76,9 @@ const handlePages = (req, res) => {
         case '/dashboard':
             filePath = path.join(__dirname,  '..' , 'admin' , 'admin.html');
             break;
+        case '/login':
+            filePath = path.join(__dirname , '..' , 'public' , 'login.html');
+            break;
         default:
             filePath = path.join(__dirname, '..', 'public', req.url);
 
