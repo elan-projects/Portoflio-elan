@@ -1,0 +1,230 @@
+@media screen and (max-width: 1855px) {
+    .service_cards_wrapper {
+        gap:10px;
+    }
+}
+@media screen and (max-width: 1797px) {
+    .boundries {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 1660px) {
+    .boundries {
+        width: 70%;
+    }
+    .pic_container {
+        width: 429px;
+        height: 501px;
+    }
+}
+@media screen and (max-width: 1580px) {
+    .boundries {
+        width: 90%;
+    }
+    .service_cards_wrapper {
+        height: 250px;
+    }
+
+    .pic_container {
+        width: 360px;
+        height: 434px;
+    }
+    .dev_container {
+        width: max-content;
+    }
+}
+@media screen and (max-width: 1375px) {
+    .boundries {
+        width: 90%;
+    }
+    .main_about {
+        width: 76%;
+    }
+}
+@media screen and (max-width: 1240px) {
+    .footer_section {
+        flex-wrap:wrap;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .service_card {
+        min-width:240px;
+        height: 100%;;
+    }
+    .service_cards_wrapper {
+        height: 300px;
+    }
+    .neon_top {
+        height:30vh;
+    }
+    .main_about {
+        width: 85%;
+    }
+  
+}
+@media screen and (max-width: 1100px) {
+    .footer_section {
+        height: fit-content;
+        flex-direction: column;
+        align-items: flex-start;
+        gap:30px;
+        padding-bottom:30px;
+    }
+    .neon_buttom {
+        height: 67%;
+    }
+    .contact_footer {
+        margin-top:100px;
+    }
+    .contact_info_section {
+        flex-direction: column;
+        align-items: flex-start;
+        margin:100px auto;
+        /* height: 100vh; */
+        justify-content: center;
+        gap:100px;
+        margin:140px auto;
+    }
+    .pic_container {
+        width: 307px;
+        height: 366px;
+    }
+
+    .dev_container { 
+        padding: 20px 34px;
+    }
+} 
+@media screen and (max-width: 945px) {
+    .boundries {
+        width: 90%;
+    }
+    .service_cards_wrapper {
+        flex-direction: column;
+        height: fit-content;
+        gap:23px;
+    }
+    .service_card {
+        width: 100%;
+        height: 190px;;
+    }
+    .main_nav {
+        padding:25px 10%;
+    }
+    .project_card {
+        width: 100%;
+    }
+    .main_about {
+        width: 93%;
+    }
+    .experience_list {
+        scale: .9;
+    }
+    .card{
+        width: 166px;
+        height: 166px;
+    }
+}
+@media screen and (max-width: 790px) {
+    .contanct_input_container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .contanct_input_container input{
+        padding: 25px 40px;        
+        width: 100%;
+    }
+    .contanct_input_container button {
+        width: auto;
+        padding: 20px 0;
+    }
+    .neon_center {
+        width: 258%;
+    }
+    .main_content {
+        width: 100%;
+    }
+    .neon_center { 
+        width: 100%;
+    }
+    .main_content p {
+        width: 90%;
+    }
+    .nav__links {
+        display: none;
+    }
+    .sec_nav {
+        display: inline;
+    }
+    .dev_container {
+        padding: 20px 0px 0 23px;
+    }
+    .experience_container {
+        scale: .9;
+    }
+} 
+@media screen and (max-width: 585px) {
+    .main_content h1 {
+        font-size:50px;
+    }
+    .contact_form {
+        width:100%;
+    }
+    .contact_info_section form input , .contact_info_section form textarea {
+        width: 100%;
+    }
+    .project_info_wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap:40px;
+    }
+}
+@media screen and (max-width: 435px) {
+    .main_buttons_container {
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        gap:30px;
+        margin-top:40px;
+    }
+    .main_buttons_container button {
+        width: 80%;
+        margin: auto;
+    }
+    .footer_my {
+        width: 100%;
+    }
+    .service_card {
+        height: fit-content;
+    }
+}
+
+@media screen and (max-width:690px) {
+    .main_about {
+        flex-direction: column;
+        margin-top:160px;
+    }
+    .pic_container {
+        width: 85%;
+    }
+    .dev_text {
+        width: 100%;
+    }
+    .dev_container {
+        width: auto;
+    }
+    .skills_list {
+        justify-content: center;
+    }
+    .dev_container {
+        margin-top:40px;
+    }
+
+}
+@media screen and (max-width: 500px) {
+    .project_card {
+        height: 367px;
+    }
+    .testimony_section {
+        margin-top:100px;
+    }
+}

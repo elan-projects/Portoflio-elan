@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <title>Projects</title>
+</head>
+<body>
+    <header>
+        <nav class="main_nav">
+            <div class="logo"  onClick="window.location.href='/'">
+                <strong><span>E</span>LAN</strong>
+            </div>
+            <ul class="nav__links">
+                <li onclick="window.location.href='/'">Home</li>
+                <li onclick="window.location.href='/projects'">Projects</li>
+                <li onclick="window.location.href='/contact'">Contact</li>
+            </ul>
+            <div class="sec_nav">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            <div>
+        </nav>
+    </header>
+    <nav class="sec_nav_container">
+        <ul class="nav__links_sec">
+            <li onclick="window.location.href='/'">Home</li>
+            <li onclick="window.location.href='/projects'">Projects</li>
+            <li onclick="window.location.href='/contact'">Contact</li>
+        </ul>
+    </nav>
+    <canvas id="dustCanvas"></canvas>
+    <div class="login">
+    <section class="contact_info_section boundries login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+</div>
+        <div class="neon_buttom"></div>
+    <script src="./js/login.js"></script>
+</body>
+</html>

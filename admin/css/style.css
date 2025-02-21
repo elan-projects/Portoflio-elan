@@ -1,0 +1,464 @@
+:root {
+    --token-background-color: rgb(13, 24, 23);
+    --token-6387cd44-9ddb-4073-bf67-fad77408f186: rgb(21, 37, 35);
+    --token-primary-text-color: rgb(0, 222, 188);
+    --token-126b5894-b9ba-4211-acd8-ecfc80ec94a9: rgb(0, 161, 137);
+    --token-e91715da-04f6-4d7b-8ef4-d115c6c7cf80: rgb(255, 255, 255);
+    --token-color-light: rgb(215, 248, 243);
+    --token-border: rgb(39, 69, 66);
+}
+
+.admin_dasboard {
+    height: fit-content;
+    margin-top:140px;
+}
+
+.neon_buttom {
+    height: 20vh;
+    position: fixed;
+    bottom: 0;
+}
+
+canvas {
+    position: fixed;
+}
+
+h1, h2 {
+    color: #FFF;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    /* background: #fff; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+
+.form-container {
+    margin: 20px 0;
+    padding: 20px;
+    /* background: #f8f9fa; */
+    border-radius: 8px;
+}
+
+.form-container input, .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    outline: none;
+    border: 1px solid #dddddd5e;
+    border-radius: 4px;
+    background-color: #10101042;
+    color: var(--token-color-light);
+}
+
+.form-container button {
+    padding: 10px 20px;
+    background-color: var(--token-border);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: var(--token-6387cd44-9ddb-4073-bf67-fad77408f186)
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-add {
+    background-color: #007bff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+
+
+
+
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-upload label {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #274542; /* Green dashed border */
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-upload label:hover {
+    border-color: #1b332f; /* Darker green on hover */
+}
+
+.image-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-upload input {
+    display: none; /* Hide default input */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Container for Top Projects */
+#topProjectsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive Grid */
+    gap: 20px;
+    padding: 20px;
+}
+
+.top-project {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    height: fit-content;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Project Title */
+.top-project h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Project Description */
+
+
+/* View Project Button */
+.top-project a {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--token-border);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.top-project a:hover {
+    background-color: var(--token-6387cd44-9ddb-4073-bf67-fad77408f186)
+}
+
+.top-project img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+/* Container for better alignment */
+.select-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between select & button */
+    margin-top: 20px;
+}
+
+/* Styled Select Dropdown */
+#projectSelect {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid var(--token-border);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--token-color-light);
+    cursor: pointer;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projectSelect:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#projectSelect:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+}
+
+/* Button Styling */
+.markastop {
+    padding: 10px 15px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    color: #fff;
+    background-color: var(--token-border); /* Custom variable */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom:100px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--token-6387cd44-9ddb-4073-bf67-fad77408f186);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+.dev_info {
+    width: 60%;;
+    margin: auto;
+}
+
+
+.developer_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    width: 60%;
+    padding: 20px;
+    margin: auto;
+}
+
+.dev_card {
+    width: 250px;
+    background-color: #f9f9f900;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.dev_card:hover {
+    transform: scale(1.05);
+}
+
+.dev_img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.dev_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info section inside the card */
+.dev_info {
+    padding: 15px;
+    text-align: center;
+}
+
+.dev_info h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dev_info p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.5;
+}
+
+
+.profile, .experience, .skills {
+    margin-bottom: 20px;
+}
+.profile h2, .experience h2, .skills h2 {
+    color: #333;
+}
+.experience-item, .skill-item {
+    margin-left: 20px;
+}
+
+.skill-item { 
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.skill-item svg {
+    width: 100%;
+    height: 100%;
+}
+.skill-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.btn-delete {
+    background-color: rgba(255, 0, 0, 0.44);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin:auto;
+}
+
+
+
+.custom-icon svg {
+    width: 100px;    
+    height: 100%;
+}
+
+.pex_contianer {
+    width: 60%;
+    margin: auto;
+}
+
+@media screen and (max-width: 910px) {
+    .dev_info {
+        width: 100%;
+    }
+}
+
+
+.user_center {
+    width:60%;
+    /* border:1px solid red; */
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap:40px;
+    margin:auto;
+    justify-content: center;
+}
+
+.visitors {
+    width:340px;
+    height:200px;
+    border-radius: 19px;
+    display: flex;
+    background-color: rgba(0, 128, 128, 0.308);
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size:2rem;
+    cursor: pointer;
+}
+
+.visitors span {
+    font-size:3rem;
+    font-weight: 700;
+}
+
+.visitors svg {
+    width: 70px;
+    fill: black;
+}
+
+
+.more_info{
+    width:340px;
+    height:200px;
+    border-radius: 19px;
+    display: flex;
+    background-color: rgba(0, 128, 64, 0.308);
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size:2rem;
+}
+
+.user_center_info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width: 60%;
+    margin: auto;
+    gap:40px;
+    margin-top:100px;
+}
+
+.user_info_card {
+    width: 500px;
+    background-color: #0000007d;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+.testi_container {
+    display: flex;
+    gap:50px;
+    flex-wrap: wrap;
+}
+
+.testi_section {
+    margin-top:200px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap:54px;
+    margin:auto;
+}
