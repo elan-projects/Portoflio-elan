@@ -6,6 +6,7 @@
     <link rel="Stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <title>Elan Agency</title>
+    
 </head>
 <body>
     <header>
@@ -13,41 +14,53 @@
             <div class="logo"  onClick="window.location.href='/'">
                 <strong><span>E</span>LAN</strong>
             </div>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option selected disabled>🌍</option>
+                    <option data-lang="en" value="en">🇬🇧</option>
+                    <option data-lang="ar" value="ar">🇸🇦</option>
+                    <option data-lang="zh" value="zh">🇨🇳</option>
+                    <option data-lang="fr" value="fr">🇫🇷</option>
+                </select>
+            </div>
             <ul class="nav__links">
-                <li data-target="service_section">Services</li>
-                <li onclick="window.location.href='/projects'">Projects</li>
-                <li onclick="window.location.href='/contact'">Contact</li>
+                <li data-target="service_section"  data-key="service">Services</li>
+                <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+                <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
             </ul>
+
             <div class="sec_nav">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
             <div>
+                
         </nav>
     </header>
     <nav class="sec_nav_container">
         <ul class="nav__links_sec">
-            <li data-target="service_section">Services</li>
-            <li onclick="window.location.href='/projects'">Projects</li>
-            <li onclick="window.location.href='/contact'">Contact</li>
+            <li data-target="service_section" data-key="service">Services</li>
+            <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+            <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
         </ul>
     </nav>
     <canvas id="dustCanvas"></canvas>
     <section id="main_section" class="main_section"> 
         <div class="neon_top"></div>
         <div class="main_content">
-            <h1>Your Digital <br>Success <span>Starts Here</span></h1>
-            <p>
-                Stunning, high-performance websites that <span>elevate your brand </span>and <span>drive results</span>. Let's build something amazing together!  
+            <h1 data-key="digital_success">Your Digital <br>Success <span>Starts Here</span></h1>
+            <p data-key="brand_elevation">
+                Stunning, high-performance websites that <span>elevate your brand</span> and <span>drive results</span>. Let's build something amazing together!  
             </p>
+            
             <div class="main_buttons_container">
-                <button id="contact_button" onClick="window.location.href='/contact'">Contact Us</button>
-                <button id="project_button" onclick="window.location.href='/projects'">See Projects</button>
+                <button id="contact_button" onClick="window.location.href='/contact'"  data-key="contact">Contact Us</button>
+                <button id="project_button" onclick="window.location.href='/projects'" data-key="projects">See Projects</button>
             </div>
         </div>
     </section>
     <section id="service_section" class="service_section boundries">
         <div class="main_content service_content">
-            <h1>Our <span>Services</span></h1>
-            <p>
+            <h1 data-key="our_services">Our <span>Services</span></h1>
+            <p data-key="service_text">
                 Helping businesses of all sizes turn ideas into powerful digital experiences. Let's bring your vision to life!  
             </p>
         </div>
@@ -57,8 +70,8 @@
                 <div class="service_logo">
                     <svg viewBox="0 0 32 32" id="svg373242380"><path d="M 6.667 15.333 C 6.667 14.229 7.562 13.333 8.667 13.333 L 23.334 13.333 C 24.438 13.333 25.334 14.229 25.334 15.333 C 25.334 16.438 24.438 17.333 23.334 17.333 L 8.667 17.333 C 7.562 17.333 6.667 16.438 6.667 15.333 Z M 8.667 24 L 18 24 C 19.104 24 20 23.104 20 22 C 20 20.896 19.104 20 18 20 L 8.667 20 C 7.562 20 6.667 20.896 6.667 22 C 6.667 23.104 7.562 24 8.667 24 Z M 32 8.667 L 32 23.334 C 31.996 27.382 28.715 30.662 24.667 30.667 L 7.333 30.667 C 3.285 30.662 0.004 27.382 0 23.333 L 0 8.666 C 0.004 4.618 3.285 1.337 7.333 1.333 L 24.666 1.333 C 28.714 1.337 31.995 4.618 31.999 8.666 Z M 10.667 6 C 10.667 7.104 11.562 8 12.667 8 C 13.771 8 14.667 7.104 14.667 6 C 14.667 4.896 13.771 4 12.667 4 C 11.562 4 10.667 4.896 10.667 6 Z M 4 6 C 4 7.104 4.896 8 6 8 C 7.104 8 8 7.104 8 6 C 8 4.896 7.104 4 6 4 C 4.896 4 4 4.896 4 6 Z M 28 10.667 L 4 10.667 L 4 23.334 C 4 25.175 5.493 26.667 7.333 26.667 L 24.666 26.667 C 26.507 26.667 27.999 25.174 27.999 23.334 L 27.999 10.667 Z" fill="var(--token-6c3e3a19-e10c-435f-b66c-1460849e80f5, rgb(0, 222, 188)) /* {&quot;name&quot;:&quot;Brand&quot;} */"></path></svg>
                 </div>
-                <h2>Web Development<h2>
-                    <p>
+                <h2 data-key="web_dev_intro">Web Development<h2>
+                    <p data-key="web_dev_text_service">
                         Crafting visually stunning and user-friendly websites that captivate your audience and drive engagement.
                     </p>
             </div>
@@ -66,8 +79,8 @@
                 <div class="service_logo">
             <svg  width="40px" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"  fill="var(--token-6c3e3a19-e10c-435f-b66c-1460849e80f5, rgb(0, 222, 188))"><path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" d="M92.953 57.154c22.628-22.627 57.983-35.355 76.368-33.94 1.414 18.384-11.314 53.74-33.941 76.367-22.628 22.627-48.084 39.598-62.226 45.255L47.698 119.38c5.657-14.142 22.628-39.598 45.255-62.226Zm-5.657 48.084-39.598 39.598"/><circle cx="128.309" cy="64.225" r="12"  fill="black" transform="rotate(45 128.309 64.225)"/><path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" d="m115.581 119.38 1.569 17.256c.779 8.57-3.09 16.9-10.139 21.835l-16.886 11.82-1.414-32.527M73.154 76.953l-17.256-1.569a24 24 0 0 0-21.835 10.139l-11.82 16.886 32.527 1.414"/></svg>
                 </div>
-                <h2>Digital Marketing</h2>
-                <p>
+                <h2 data-key="seo_intro">Digital Marketing</h2>
+                <p data-key="seo_text_service">
                     Optimizing your website for speed, SEO, and user experience to enhance visibility and drive conversions.  
                 </p>
             </div>
@@ -75,8 +88,8 @@
                 <div class="service_logo">
                     <svg viewBox="0 0 32 32" id="svg2788122373"><path d="M 19.333 0 L 12.666 0 C 8.618 0.004 5.337 3.285 5.333 7.333 L 5.333 24.666 C 5.337 28.714 8.618 31.995 12.666 31.999 L 19.333 31.999 C 23.381 31.995 26.662 28.714 26.666 24.666 L 26.666 7.333 C 26.662 3.285 23.382 0.004 19.333 0 Z M 12.667 4 L 19.334 4 C 21.175 4 22.667 5.492 22.667 7.333 L 22.667 24 L 9.334 24 L 9.334 7.333 C 9.334 5.492 10.826 4 12.667 4 Z M 16 29.333 C 15.264 29.333 14.667 28.736 14.667 28 C 14.667 27.264 15.264 26.667 16 26.667 C 16.736 26.667 17.333 27.264 17.333 28 C 17.333 28.736 16.736 29.333 16 29.333 Z" fill="var(--token-6c3e3a19-e10c-435f-b66c-1460849e80f5, rgb(0, 222, 188)) /* {&quot;name&quot;:&quot;Brand&quot;} */"></path></svg>                
                 </div>
-                <h2>Mobile App Development<h2>
-                    <p>
+                <h2 data-key="mobile_intro">Mobile App Development<h2>
+                    <p data-key="mobile_text_service">
                         Designing and developing customized mobile applications and expand your brand's reach.                    
                     </p>
             </div>
@@ -84,20 +97,19 @@
     </section>
     <section id="projects_section" class="projects_section boundries">
         <div class="main_content service_content">
-            <h1>Selected <span>Projects</span></h1>
-            <p>  
+            <h1 data-key="selected_projects">Selected <span>Projects</span></h1>              <p data-key="selected_project_text">  
                 Discover our finest work, crafted with precision, innovation, and a focus on results.  
             </p>  
         </div>
         <div class="projects_wrapper">
         <!-- Projects Here  Only Four (Main Projects)-->
         </div>
-        <h3 class="view_more_text" onClick="window.location.href='/projects'">View more</h3>
+        <h3 class="view_more_text" data-key="view_more" onClick="window.location.href='/projects'">View more</h3>
     </section>
     <section class="testimony_section boundries" id="testimony_section">
         <div class="main_content service_content">
-            <h1>Our <span>Happy Clients</span></h1>
-            <p>
+            <h1 data-key="our_happy_clients">Our <span>Happy Clients</span></h1>
+            <p data-key="testi_text">
                 Businesses from various industries trust us for custom solutions and lasting partnerships built on success.  
             </p> 
         </div>
@@ -107,7 +119,7 @@
             </div>
         </div>
         <div class="add_testi">
-            <button>Add Yours</button>
+            <button data-key="add_yours">Add Yours</button>
         </div>
     </section>
     <section class="add_testi_section">
@@ -116,21 +128,20 @@
                 <label class="image-preview" id="imagePreview">
                     <img id="previewImg" src="/uploads/testi_img/elan_pic.jpg" alt="Your Image">
                 </label>
-                <input type="text" name="name" placeholder="FullName">
-                <input type="text" name="job"  placeholder="Profession">
-                <textarea type="text" name="msg"  placeholder="Your Message"></textarea>
-                <label for="fileInput" class="custom-file-upload">Choose Image</label>
+                <input type="text" name="name" placeholder="FullName" data-key="name">
+                <input type="text" name="job"  placeholder="Profession" data-key="profession">
+                <textarea type="text" name="msg"  placeholder="Your Message" data-key="your_message"></textarea>
+                <label for="fileInput" class="custom-file-upload" data-key="choose_img">Choose Image</label>
                 <input type="file"  name="image" id="fileInput" accept="image/*"  placeholder="image">
                 <div class="button_submit">
-                    <button>Submit</button>
+                    <button data-key="submit_button">Submit</button>
                 </div>
             </form>
         </div>
     </section>
     <section class="developer_section boundries">
         <div class="main_content service_content">
-            <h1>Meet the <span>Developers</span></h1>
-            <p>
+            <h1 data-key="meet_developers">Meet the <span>Developers</span></h1>              <p data-key="meet_devs">
                 Get to know the talented developers behind Elan. Each one brings unique skills and creativity to the table.
             </p>
         </div>
@@ -139,14 +150,14 @@
     </section>
     <section class="contact_section boundries" id="contact_section">
         <div class="main_content service_content">
-            <h1>Ready to Elevate 
+            <h1 data-key="ready_to_elevate">Ready to Elevate 
                 <br> Your <span>Digital Presence?</span></h1>
-                <p>
+                <p data-key="more_info_text">
                     Whether you're a growing startup or an established business, our expert team is here to help you transform your online strategy and achieve measurable success.  
                 </p>
             <div class="contanct_input_container email_input">
-                <input type="text" placeholder="Your email">
-                <button id="submitemail">Get Started</button>
+                <input type="text" placeholder="Your email" data-key="your_email_input">
+                <button id="submitemail" data-key="get_started_button">Get Started</button>
             </div>
         </div>
     </section>
@@ -156,21 +167,21 @@
             <div class="logo"  onClick="window.location.href='/'">
                 <strong><span>E</span>LAN</strong>
             </div>
-            <p>
+            <p data-key="elan_strong">
                 Elan – Where innovative design meets user-focused solutions to elevate your online presence.  
             </p>
         </div>
         <div  class="footer_nav">
-            <h1>Navigation</h1>
+            <h1 data-key="navigation">Navigation</h1>
             <ul>
-                <li onClick="window.location.href='/'">Home</li>
-                <li data-target="service_section">Services</li>
-                <li onclick="window.location.href='/projects'">Projects</li>
-                <li onclick="window.location.href='/contact'">Contact</li>
+                <li onClick="window.location.href='/'" data-key="home">Home</li>
+                <li data-target="service_section" data-key="service">Services</li>
+                <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+                <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
             </ul>
         </div>
         <div class="footer_contact">
-            <h1>Contact Info</h1>
+            <h1 data-key="contact_us">Contact Info</h1>
             <div class="footer_location">
                 <div class="svg_footer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243)); color: var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243)); flex-shrink: 0;" focusable="false" color="var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243))"><g color="var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243))" weight="fill"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></g></svg>
@@ -197,7 +208,7 @@
             </div>
         </div>
         <div class="footer_social_media">
-            <h1>Follow Us</h1>
+            <h1 data-key="follow_us">Follow Us</h1>
             <ul>
                 <li onclick="window.open('https://www.tiktok.com/@lan.webdev?_t=ZS-8u6NvEP0iBT&_r=1', '_blank')">
                     <?xml version="1.0" encoding="utf-8"?>
@@ -219,6 +230,7 @@
     </footer>
     <div class="neon_buttom"></div>
 </div>
+<script src="./lang/language-switcher.js"></script>
 <script src="./js/content.js"></script>
 <script src="./js/main.js"></script>
 </body>

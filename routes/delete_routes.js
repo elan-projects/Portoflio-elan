@@ -1,7 +1,6 @@
 const db = require('./db');
 const path = require('path');
 const { handleLogin, verifyToken } = require('./auth_route');
-
 const handleDeleteProjects = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -45,11 +44,6 @@ const handleDeleteProjects = (req, res) => {
         }
     });
 };
-
-
-
-
-
 const handleDeleteFeature = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -85,14 +79,11 @@ const handleDeleteFeature = (req, res) => {
         }
     });
 };
-
-
 const handleDeleteDev = (req, res) => {
     let body = '';
     req.on('data', (chunk) => {
         body += chunk;
     });
-
     req.on('end', () => {
         try {
             const data = JSON.parse(body);
@@ -133,30 +124,21 @@ const handleDeleteDev = (req, res) => {
         }
     });
 };
-
-
 const url = require('url');
-
 function handleDeleteTesti(req, res) {
         const id = req.url.split("/").pop();
         const sql = "DELETE FROM testimonials WHERE id = ?";
-
         db.run(sql, [id], function (err) {
             if (err) {
                 res.writeHead(500, { "Content-Type": "application/json" });
                 return res.end(JSON.stringify({ error: "Database error", details: err }));
             }
-
             if (this.changes === 0) { 
                 res.writeHead(404, { "Content-Type": "application/json" });
                 return res.end(JSON.stringify({ error: "Testimonial not found" }));
             }
-
             res.writeHead(200, { "Content-Type": "application/json" });
             return res.end(JSON.stringify({ message: "Testimonial deleted successfully" }));
         });
-
 }
-
-
 module.exports = {handleDeleteProjects ,handleDeleteFeature , handleDeleteDev , handleDeleteTesti} ;

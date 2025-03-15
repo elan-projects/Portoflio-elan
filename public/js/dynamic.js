@@ -1,3 +1,75 @@
+const starsAnimAppear = () => {
+    if(!document.querySelector(".aboutSection")) {
+        return;
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        const section = document.createElement("section");
+        
+        document.body.appendChild(section);
+        section.style.position = "fixed";
+        section.style.top = "0";
+        section.style.left = "0";
+        section.style.width = "100%";
+        section.style.zIndex = "-1100";
+        section.style.height = "100vh";
+        section.style.background = "url(./bg0.jpg)";
+        section.style.backgroundPositionX = "center";
+        section.style.backgroundSize = "cover";
+        section.style.animation = "animateBg 50s linear infinite";
+        
+        for (let i = 0; i < 4; i++) {
+            const span = document.createElement("span");
+            span.style.position = "absolute";
+            span.style.top = "0";
+            span.style.left = `${Math.random() * window.innerWidth}px`;
+            span.style.width = "4px";
+            span.style.height = "4px";
+            span.style.background = "aqua";
+            span.style.borderRadius = "50%";
+            span.style.boxShadow = "0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1)";
+            span.style.animation = `animate ${1 + Math.random() * 5}s linear infinite`;
+            span.style.animationDelay = `${Math.random() * 1}s`;
+            
+            const before = document.createElement("span");
+            before.style.content = "''";
+            before.style.position = "absolute";
+            before.style.top = "50%";
+            before.style.transform = "translateY(-50%)";
+            before.style.width = "200px";
+            before.style.height = "1px";
+            before.style.background = "linear-gradient(90deg, #fff, transparent)";
+            span.appendChild(before);
+            
+            section.appendChild(span);
+        }
+    
+        const style = document.createElement("style");
+        style.innerHTML = `
+        @keyframes animateBg {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: rotate(315deg) translateX(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(315deg) translateX(-1500px);
+                opacity: 0;
+            }
+        }`;
+        document.head.appendChild(style);
+    });
+    
+    
+
+}
+starsAnimAppear();
 const extractId = ()=> {
     const url = window.location.pathname;
     const segments = url.split('/');
@@ -28,7 +100,7 @@ function handleProjectInfo() {
             }
         })
         .catch(err => {
-            console.error('Error occurred:', err);
+            console.error('Project Info Not Found');
         });
 }
 function handleFeaturesInfo() {
@@ -62,7 +134,6 @@ function handleFeaturesInfo() {
                 const mainContainer = document.querySelector('.main_container');
                 mainContainer.appendChild(featuresListContainer);
             } else {
-                console.log('No features found for this project');
             }
         })
         .catch(err => {
@@ -72,7 +143,6 @@ function handleFeaturesInfo() {
 try {
 function generateProjectCards() {
     const projectsWrapper = document.querySelector('.projects_wrapper');
-    if (!projectsWrapper) return;
     fetch('/api/get_projects')
         .then(res => {
             if (!res.ok) {
@@ -115,7 +185,7 @@ function generateProjectCards() {
             goToMainProject();
         })
         .catch(err => {
-            console.error('Error occurred:', err);
+            // console.error('Error occurred:', err);
         });
 }
 }catch(error) {
@@ -131,7 +201,7 @@ const goToMainProject = () => {
     });
 };
 const getDevInfo = ()=> {
-    if(!document.querySelector(".aboutSection")){
+    if(!document.querySelector(".devSection") && !document.querySelector(".aboutSection")) {
         return;
     }
 const url = window.location.href; 
@@ -192,6 +262,10 @@ function populateProfileContent(profile, data) {
     });
 }
 }
+
+
+
+
 getDevInfo();
 generateProjectCards();
 handleFeaturesInfo();

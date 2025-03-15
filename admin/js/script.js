@@ -565,7 +565,7 @@ function getUserInfo() {
                     <div class="user_info_card">
                         <div class="data_item">
                             <span class="label">IP Address:</span>
-                            <span>${userInfo.ip_address} (Visits: ${userInfo.count})</span>
+                            <span>${userInfo.ip_address} (Visits: ${userInfo.counter})</span>
                         </div>
                         <div class="data_item">
                             <span class="label">City:</span>

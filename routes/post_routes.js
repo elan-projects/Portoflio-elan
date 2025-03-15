@@ -3,7 +3,6 @@ const upload = require('./upload');
 const db = require('./db');
 const fs = require("fs");
 const multer = require("multer");
-
 const handleStoreProject = (req, res) => {
     upload(req, res, (err) => {
         if (err) {
@@ -35,10 +34,6 @@ const handleStoreProject = (req, res) => {
         });
     });
 };
-
-
-
-
 const handleStoreFeature = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -47,7 +42,6 @@ const handleStoreFeature = (req, res) => {
     req.on('end', () => {
         try {
             let formData = JSON.parse(body);
-            console.log("Form Data: ", formData);
             if (!formData.projectId || !formData.featureName) {
                 res.writeHead(400, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: 'Missing required fields' }));
@@ -69,10 +63,6 @@ const handleStoreFeature = (req, res) => {
         }
     });
 };
-
-
-
-
 const handleMarkProjectAsTop = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -108,10 +98,6 @@ const handleMarkProjectAsTop = (req, res) => {
         }
     });
 };
-
-
-
-
 const unmarkTopProject = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -136,9 +122,6 @@ const unmarkTopProject = (req, res) => {
         }
     });
 };
-
-
-
 const handleStoreDeveloper = (req,res) => {
     upload(req, res, (err) => {
         if (err) {
@@ -170,9 +153,6 @@ const handleStoreDeveloper = (req,res) => {
         });
     });
 }
-
-
-
 const handleStoreExperience = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -180,7 +160,6 @@ const handleStoreExperience = (req, res) => {
     });
     req.on('end', () => {
         const formData = JSON.parse(body);
-        console.log("test:", formData); 
         let { profile_id, type, value } = formData;
         if (!profile_id || !type || !value) {
             res.writeHead(400, {'Content-Type': 'application/json'});
@@ -199,9 +178,6 @@ const handleStoreExperience = (req, res) => {
         });
     });
 };
-
-
-
 const handleStoreSkill = (req, res) => {
     let body = '';
     req.on('data', chunk => {
@@ -210,9 +186,7 @@ const handleStoreSkill = (req, res) => {
     req.on('end', () => {
         try {
             let formData = JSON.parse(body);
-            console.log("Received Data:", formData);
             const {id , skillName, skillIcon } = formData;
-            console.log("formData" , formData);
             if (!skillName || !skillIcon || !id) {
                 res.writeHead(400, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: 'All Data Must be Filled' }));
@@ -236,96 +210,106 @@ const handleStoreSkill = (req, res) => {
         }
     });
 };
-
-
 const handleStoreUser = (req, res) => {
     let body = '';
-
-req.on('data', (chunk) => {
-    body += chunk;
-});
-
-req.on('end', () => {
-    try {
-    
-    let formData = JSON.parse(body);
-    console.log("Received Data:", formData);
-
-    const { device, net } = formData;
-    const { ip, city, region, country, org ,postal } = net;
-
-    
-    if (!ip || !city || !region || !country || !org || !device) {
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'All required data must be provided' }));
-        return;
-    }
-
-    let query = `INSERT INTO user_info (
-        ip_address, city, region, country, isp, browser, platform, screen_resolution, color_depth
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-    const browser = device;  
-    const platform = postal;  
-    const screen_resolution = 'unknown';  
-    const color_depth = 'unknown';  
-
-    db.run(query, [
-        ip, city, region, country, org, browser, platform, screen_resolution, color_depth
-    ], (err) => {
-        if (err) {
-        console.error('Database Error:', err);
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Error while inserting user info into the database' }));
-        return;
-        }
-
-        
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'User info added successfully' }));
+    req.on('data', (chunk) => {
+        body += chunk;
     });
-    } catch (error) {
-    console.error("Error parsing JSON:", error);
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Invalid JSON format' }));
-    }
-});
+
+    req.on('end', () => {
+        try {
+            let formData = JSON.parse(body);
+            const { device, net } = formData;
+            const { ip, city, region, country, org, postal } = net;
+
+            if (!ip || !city || !region || !country || !org || !device) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'All required data must be provided' }));
+                return;
+            }
+
+            const browser = device;
+            const platform = postal;
+            const screen_resolution = 'unknown';
+            const color_depth = 'unknown';
+
+            // Check if the IP already exists
+            const checkQuery = `SELECT counter FROM user_info WHERE ip_address = ?`;
+
+            db.get(checkQuery, [ip], (err, row) => {
+                if (err) {
+                    console.error('Database Error:', err);
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'Database error' }));
+                    return;
+                }
+
+                if (row) {
+                    // If the user exists, update the counter
+                    const updateQuery = `UPDATE user_info SET counter = counter + 1 WHERE ip_address = ?`;
+
+                    db.run(updateQuery, [ip], (updateErr) => {
+                        if (updateErr) {
+                            console.error('Database Error:', updateErr);
+                            res.writeHead(500, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ error: 'Error updating counter' }));
+                            return;
+                        }
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ message: 'User counter updated successfully' }));
+                    });
+
+                } else {
+                    // If the user does not exist, insert a new record with counter = 1
+                    const insertQuery = `
+                        INSERT INTO user_info (ip_address, city, region, country, isp, browser, platform, screen_resolution, color_depth, counter)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+                    `;
+
+                    db.run(insertQuery, [ip, city, region, country, org, browser, platform, screen_resolution, color_depth], (insertErr) => {
+                        if (insertErr) {
+                            console.error('Database Error:', insertErr);
+                            res.writeHead(500, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ error: 'Error inserting user info' }));
+                            return;
+                        }
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ message: 'User info added successfully' }));
+                    });
+                }
+            });
+
+        } catch (error) {
+            console.error("Error parsing JSON:", error);
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Invalid JSON format' }));
+        }
+    });
 };
 
-
 const handleStoreTestimonial = (req,res) => {
-   
-    
-    // Custom storage for testimonial images
     const testiStorage = multer.diskStorage({
         destination: (req, file, cb) => {
             const uploadDir = path.join(__dirname, "..", "uploads", "testi_img");
-    
             if (!fs.existsSync(uploadDir)) {
-                fs.mkdirSync(uploadDir, { recursive: true }); // Ensure directory exists
+                fs.mkdirSync(uploadDir, { recursive: true }); 
             }
-    
             cb(null, uploadDir);
         },
         filename: (req, file, cb) => {
             cb(null, Date.now() + "-" + file.originalname.replace(/ /g, "_"));
         },
     });
-    
     const uploadTestiImage = multer({ storage: testiStorage }).single("image");
-    
         uploadTestiImage(req, res, (err) => {
             if (err) {
                 return res.status(500).json({ message: "Image upload failed!", error: err.message });
             }
-    
             const { name, job, message } = req.body;
             const imagePath = req.file ? `/uploads/testi_img/${req.file.filename}` : null;
-    
             if (!name || !job || !message) {
                 return res.status(400).json({ message: "All fields are required!" });
             }
-    
             db.run(`INSERT INTO testimonials (name, job, message, image) VALUES (?, ?, ?, ?)`,[name, job, message, imagePath],(err) => {
                     if (err) {
                         return res.status(500).json({ message: "Database error", error: err.message });
@@ -334,14 +318,7 @@ const handleStoreTestimonial = (req,res) => {
                 }
             );
         });
-    
-  
-
 }
-
-
-
-
 module.exports ={ handleStoreProject ,
                 handleStoreFeature,
                 handleMarkProjectAsTop ,
@@ -351,5 +328,4 @@ module.exports ={ handleStoreProject ,
                 handleStoreSkill,
                 handleStoreUser,
                 handleStoreTestimonial
-
             };

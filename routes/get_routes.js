@@ -1,5 +1,4 @@
 const db = require('./db');
-
 const handleQuery = (res, query, errorMessage) => {
     db.all(query, (err, rows) => {
         if (err) {
@@ -13,19 +12,14 @@ const handleQuery = (res, query, errorMessage) => {
         }
     });
 };
-
 const get_projects = (req, res) => {
     const query = `SELECT * FROM Projects`;
     handleQuery(res, query, 'Failed to fetch projects.');
 };
-
 const get_features = (req, res) => {
     const query = `SELECT * FROM Features`;
     handleQuery(res, query, 'Failed to fetch features.');
 };
-
-
-
 const handleProjectInfoById = (req,id) => {
     const query = `SELECT * FROM Projects WHERE id = ?`;
     return new Promise((resolve , reject) => {
@@ -39,8 +33,6 @@ const handleProjectInfoById = (req,id) => {
         })
     })    
 }
-
-
 const getTopProjects = (req, res) => {
     let query = `SELECT * FROM Projects WHERE is_top = 1`;
     db.all(query, [], (err, rows) => {
@@ -49,18 +41,14 @@ const getTopProjects = (req, res) => {
             res.end(JSON.stringify({ error: 'Database Error: ' + err.message }));
             return;
         }
-
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify(rows));
     });
 };
-
-
 const  getDevInfo = (req,res) => {
     let profileQuery = `SELECT * FROM Profile`;
     let experienceQuery = `SELECT * FROM Experience`;
     let skillsQuery = `select * from Skills`;
-
     try {
         db.all(profileQuery , [] , (err,rowProfile) =>{ 
             if(err) {
@@ -89,8 +77,6 @@ const  getDevInfo = (req,res) => {
         console.error("Error Gathering profile Info" ,err);
     }
 }
-
-
 const getUserInfo  = (req,res) => {
     let query = `SELECT * FROM user_info`;
     try {
@@ -107,8 +93,6 @@ const getUserInfo  = (req,res) => {
         console.error("Error Occur :" , err );
     }
 }
-
-
 const getTestiInfo = (req,res) => {
     db.all("SELECT * FROM testimonials", [], (err, rows) => {
         if (err) {
@@ -116,13 +100,10 @@ const getTestiInfo = (req,res) => {
             res.end(JSON.stringify({ error: "Database error" }));
             return;
         }
-
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(rows));
     });
 }
-
-
 module.exports = {  get_projects,
                     get_features ,
                     handleProjectInfoById ,

@@ -40,8 +40,23 @@
                 <span id="views"></span><br>
                 <svg fill="aqua"  viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M21.821 12.43c-.083-.119-2.062-2.944-4.793-4.875-1.416-1.003-3.202-1.555-5.028-1.555-1.825 0-3.611.552-5.03 1.555-2.731 1.931-4.708 4.756-4.791 4.875-.238.343-.238.798 0 1.141.083.119 2.06 2.944 4.791 4.875 1.419 1.002 3.205 1.554 5.03 1.554 1.826 0 3.612-.552 5.028-1.555 2.731-1.931 4.71-4.756 4.793-4.875.239-.342.239-.798 0-1.14zm-9.821 4.07c-1.934 0-3.5-1.57-3.5-3.5 0-1.934 1.566-3.5 3.5-3.5 1.93 0 3.5 1.566 3.5 3.5 0 1.93-1.57 3.5-3.5 3.5zM14 13c0 1.102-.898 2-2 2-1.105 0-2-.898-2-2 0-1.105.895-2 2-2 1.102 0 2 .895 2 2z"/></svg>            
             </div>
-            <div class="more_info">
+            <div class="more_info card_container">
                 <p>MoreInfo</p>
+            </div>
+            <div class="project_container card_container">
+                <p>Projects</p>
+            </div>
+
+            <div class="top_project card_container">
+                <p>Top Projects</p>
+            </div>
+
+            <div class="dev_card card_container">
+                <p>Developers</p>
+            </div>
+
+            <div class="testimonial_card card_container">
+                <p>Testimonial</p>
             </div>
         </div>
 
@@ -52,6 +67,7 @@
             <h1>Admin Panel</h1>
     
             <!-- Projects Section -->
+            <section class="project_section">
             <h2>Projects</h2>
             <table id="projects-table">
                 <thead>
@@ -86,7 +102,8 @@
                     <button  type="submit">Add Project</button>
                 </form>
             </div>
-    
+            </section>
+            <section class="features_section">
             <!-- Features Section -->
             <h2>Features</h2>
             <table id="features-table">
@@ -112,6 +129,11 @@
                     <button type="submit">Add Feature</button>
                 </form>
             </div>
+
+            </section>
+
+
+            <section class="top_project_section">
             <select id="projectSelect">
                 <!-- Options will be populated dynamically -->
             </select>
@@ -120,14 +142,14 @@
 
                 <h2>Top Projects</h2>
                 <div id="topProjectsContainer"></div>
-
-        </div>
-
-
+            </div>
+        </section>
 
 
 
 
+
+    <section class="dev_info_section">
         <div class="dev_info">
             <div class="profile-section">
                 <h2>Profile</h2>
@@ -186,25 +208,26 @@
     <div class="developer_container" id="developer-container">
         <!-- Developer cards will be dynamically inserted here -->
     </div>
-
-
-    
-    
-
-
     <div class="pex_contianer">
         <div class="profile" id="profile-container"></div>
         <div class="experience" id="experience-container"></div>
         <div class="skills" id="skills-container"></div>
     </div>
+</section>
+
+
+
+
+
+
+<section class="testimonial_section">
     <div class="testi_section">
         <h1>Testimonial Section</h1>
         <div class="testi_container" id="testi_container">
         </div>
     </div>
-        <div class="neon_buttom"></div>
-
-
+</section>
+<div class="neon_buttom"></div>
     <script src="/dasboardScript/script.js"></script>
 </body>
 </html>

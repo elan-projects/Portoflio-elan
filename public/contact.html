@@ -5,44 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/responsive.css">
-    <title>Projects</title>
+    <title>Elan Contact</title>
 </head>
 <body>
     <header>
         <nav class="main_nav">
-            <div class="logo"  onClick="window.location.href='/'">
+            <div class="logo" onClick="window.location.href='/'">
                 <strong><span>E</span>LAN</strong>
             </div>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option selected disabled>🌍</option>
+                    <option data-lang="en" value="en">🇬🇧</option>
+                    <option data-lang="ar" value="ar">🇸🇦</option>
+                    <option data-lang="zh" value="zh">🇨🇳</option>
+                    <option data-lang="fr" value="fr">🇫🇷</option>
+                </select>
+            </div>
             <ul class="nav__links">
-                <li onclick="window.location.href='/'">Home</li>
-                <li onclick="window.location.href='/projects'">Projects</li>
-                <li onclick="window.location.href='/contact'">Contact</li>
+                <li onclick="window.location.href='/'" data-key="home">Home</li>
+                <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+                <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
             </ul>
             <div class="sec_nav">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                </svg>
+            </div>
         </nav>
     </header>
     <nav class="sec_nav_container">
         <ul class="nav__links_sec">
-            <li onclick="window.location.href='/'">Home</li>
-            <li onclick="window.location.href='/projects'">Projects</li>
-            <li onclick="window.location.href='/contact'">Contact</li>
+            <li onclick="window.location.href='/'" data-key="home">Home</li>
+            <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+            <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
         </ul>
     </nav>
+    
     <canvas id="dustCanvas"></canvas>
     <section class="contact_info_section boundries">
         <div class="contact_form">
-            <h1>Contact Us</h1>
-            <p>We’d love to hear from you! Whether you have a question, need assistance, or want to discuss a project, feel free to reach out. Our team is here to help bring your ideas to life and elevate your digital presence.</p>
+            <h1 data-key="contact_us">Contact Us</h1>
+            <p data-key="contact_us_text">
+                We’d love to hear from you! Whether you have a question, need assistance, or want to discuss a project, feel free to reach out. Our team is here to help bring your ideas to life and elevate your digital presence.
+            </p>
         </div>
+        
         <form method="POST">
-            <input type="text" id="name" name="name" placeholder="Name" ><br><br>
-            <input type="email" id="email" name="email" placeholder="Email" ><br><br>
-            <input type="text" id="subject" name="subject"  placeholder="Subject"><br><br>
-            <textarea id="message" name="message" rows="4" cols="50" placeholder="Message" ></textarea><br><br>
-            <button class="submit_mail" type="submit" value="Submit">Submit</button>
+            <input type="text" id="name" name="name" placeholder="Name" data-key="form_name"><br><br>
+            <input type="email" id="email" name="email" placeholder="Email" data-key="form_email"><br><br>
+            <input type="text" id="subject" name="subject" placeholder="Subject" data-key="form_subject"><br><br>
+            <textarea id="message" name="message" rows="4" cols="50" placeholder="Message" data-key="form_message"></textarea><br><br>
+            <button class="submit_mail" type="submit" value="Submit" data-key="form_submit">Submit</button>
         </form>
+        
     </section>
     <div class="main_footer contact_footer">
         <footer class="footer_section boundries" id="footer_section">
@@ -50,21 +66,20 @@
                 <div class="logo"  onClick="window.location.href='/'">
                     <strong><span>E</span>LAN</strong>
                 </div>
-                <p>
+                <p data-key="elan_strong">
                     Elan – Where innovative design meets user-focused solutions to elevate your online presence.  
-    
                 </p>
             </div>
             <div  class="footer_nav">
-                <h1>Navigation</h1>
+                <h1 data-key="navigation">Navigation</h1>
                 <ul>
-                    <li onClick="window.location.href='/'">Home</li>
-                    <li onclick="window.location.href='/projects'">Projects</li>
-                    <li onclick="window.location.href='/contact'">Contact</li>
+                    <li onClick="window.location.href='/'" data-key="home">Home</li>
+                    <li onclick="window.location.href='/projects'" data-key="project">Projects</li>
+                    <li onclick="window.location.href='/contact'" data-key="contact">Contact</li>
                 </ul>
             </div>
             <div class="footer_contact">
-                <h1>Contact Info</h1>
+                <h1 data-key="contact_us">Contact Info</h1>
                 <div class="footer_location">
                     <div class="svg_footer">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243)); color: var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243)); flex-shrink: 0;" focusable="false" color="var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243))"><g color="var(--token-ef28711a-2a4f-4e5b-8a86-b0ebf2b3c939, rgb(215, 248, 243))" weight="fill"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path></g></svg>
@@ -91,7 +106,7 @@
                 </div>
             </div>
             <div class="footer_social_media">
-                <h1>Follow Us</h1>
+                <h1 data-key="follow_us">Follow Us</h1>
                 <ul>
                     <li onclick="window.open('https://www.tiktok.com/@lan.webdev?_t=ZS-8u6NvEP0iBT&_r=1', '_blank')">
                         <?xml version="1.0" encoding="utf-8"?>
@@ -111,6 +126,8 @@
                 </ul>
             </div>
         </footer>
+<script src="./lang/language-switcher.js"></script>
+
         <div class="neon_buttom"></div>
     <script src="./js/content.js"></script>
 </body>

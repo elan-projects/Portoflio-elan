@@ -388,6 +388,7 @@ button:active {
     display: flex;
     flex-direction: row;
     gap:40px;
+    flex-wrap: wrap;
     margin:auto;
     justify-content: center;
 }
@@ -417,18 +418,39 @@ button:active {
 }
 
 
-.more_info{
+
+.card_container {
     width:340px;
     height:200px;
     border-radius: 19px;
     display: flex;
-    background-color: rgba(0, 128, 64, 0.308);
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     font-size:2rem;
+}
+
+
+.more_info{
+    background-color: rgba(0, 128, 64, 0.308);
+}
+.project_container {
+    background-color: rgba(47, 45, 45, 0.488);
+}
+
+.top_project {
+    background-color: rgba(47, 45, 45, 0.488);
+}
+
+.dev_card {
+    background-color: rgba(47, 45, 45, 0.488);
+}
+
+.testimonial_card {
+    background-color: rgba(47, 45, 45, 0.488);
+
 }
 
 .user_center_info {

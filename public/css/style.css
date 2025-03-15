@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 * {
     margin:0;
     padding:0;
@@ -152,10 +154,13 @@ header {
 }
 .logo strong{
     font-size: 1.98rem;;
+    letter-spacing: 1px;
 }
 .logo {
+    font-family: "Bebas Neue", sans-serif;
     width: 100px;
     cursor: pointer;
+
 }
 .neon_top {
     width: 100%;
@@ -424,10 +429,10 @@ canvas {
 }
 .img_project_container img {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     filter: brightness(90%);
     transition:  all 0.3s ease 0s;
-    object-fit:cover;
+    /* object-fit:cover; */
 }
 .project_info {
     color: #fff;
@@ -472,15 +477,28 @@ canvas {
     padding: 20px 10px;
     margin-bottom: 100px;
 }
+
 .marquee-content {
     display: flex;
     animation: scrolling var(--marquee-animation-duration) linear infinite;
-    gap: 50px;
+    gap: 50px; /* Adjust this value to match the gap in your JavaScript */
     will-change: transform;
 }
+
 @keyframes scrolling {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-100% - 50px)); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Move the content by half its width */
+    }
+}
+
+:root {
+    --marquee-width: 100%;
+    --marquee-height: fit-content;
+    --marquee-elements-displayed: 1;
+    --marquee-animation-duration: 30s;
 }
 .testi_card {
     width: 330px;
@@ -547,7 +565,7 @@ canvas {
     border-radius:60px;
     border:none;
     font-size:1rem;
-    background-color: #27454276;;
+    background-color: #3c274575;
     transition: all 0.1s linear;
     color: #fff;
     outline: none;
@@ -1031,7 +1049,9 @@ input[type="file"] {
 }
 .login-form {
     margin:auto;
+        display: flex;
     flex-direction: column;
+
     gap:40px;font-family: "Source Sans 3", serif;
 }
 textarea {
@@ -1072,4 +1092,48 @@ textarea {
 }
 .contact_form p {
     font-size:1.3rem;
+}
+
+
+
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    scale: 1.2;
+    gap: 10px;
+    background: transparent; 
+    backdrop-filter: blur(10px); 
+    border-radius: 8px;
+    width: fit-content;
+    margin: 20px auto;
+    font-family: "Source Sans 3", sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+}
+
+#language-select {
+    font-size: 14px;
+    border-radius: 5px;
+    background: transparent; 
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    backdrop-filter: blur(8px);
+}
+
+#language-select option {
+    background: #000; 
+    color: #fff;
+}
+
+#language-select:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#language-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
 }
